@@ -20,7 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		const selection:vscode.Selection  = vscode.window.activeTextEditor.selection;
 		const startLine = selection.start.line - 1;
-		const selectedText = vscode.window?.activeTextEditor?.document.getText(selection);
+		const selectedText = vscode.window?.activeTextEditor?.document.getText(selection).replace(/\n/g, '');
 
 		const parameters = getFunctionParams(selectedText);
 		const functionSignature = getFunctionSignature(selectedText);
