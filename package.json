@@ -3,7 +3,7 @@
 	"displayName": "asciidocComments",
 	"description": "adds ascii doc comments to function signature",
 	"version": "0.0.1",
-	"publisher": "Aleksandar Brajkovic",
+	"publisher": "aleksandarb",
 	"engines": {
 		"vscode": "^1.45.0"
 	},
@@ -57,5 +57,12 @@
 		"mocha": "^7.1.2",
 		"typescript": "^3.8.3",
 		"vscode-test": "^1.3.0"
-	}
+	},
+	"bugs": {
+		"url": "https://github.com/aleksandar-b/cute_ascii_diagram_comments/issues"
+	  },
+	  "repository": {
+		"type": "git",
+		"url": "https://github.com/aleksandar-b/cute_ascii_diagram_comments"
+	  }
 }
