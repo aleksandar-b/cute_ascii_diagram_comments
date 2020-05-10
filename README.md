@@ -3,7 +3,7 @@
 "Ascii doc comments" is a Visual Studio Code extension that automatically generates cute ascii diagram comments.
 ## Features
 
-![Demo](demo.gif)
+![Demo](video.gif)
 
 # Commands
 ## Ascii doc comments
