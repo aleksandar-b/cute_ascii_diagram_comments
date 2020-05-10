@@ -2,7 +2,7 @@
 	"name": "asciidoccomments",
 	"displayName": "asciidocComments",
 	"description": "adds ascii doc comments to function signature",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"publisher": "aleksandarb",
 	"engines": {
 		"vscode": "^1.45.0"
@@ -13,29 +13,29 @@
 		"Snippets"
 	],
 	"activationEvents": [
-        "onCommand:asciidoccomments.docComments"
+		"onCommand:asciidoccomments.docComments"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "asciidoccomments.docComments",
-                "title": "Generate Ascii doc comments"
+				"title": "Generate Ascii doc comments"
 			}
 		],
 		"menus": {
 			"editor/context": [
 				{
-				  "command": "asciidoccomments.docComments"
+					"command": "asciidoccomments.docComments"
 				}
 			]
 		},
 		"keybindings": [
 			{
-			  "command": "asciidoccomments.docComments",
-			  "key": "ctrl+alt+d ctrl+alt+d"
+				"command": "asciidoccomments.docComments",
+				"key": "ctrl+alt+d ctrl+alt+d"
 			}
-		  ]
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
@@ -60,9 +60,9 @@
 	},
 	"bugs": {
 		"url": "https://github.com/aleksandar-b/cute_ascii_diagram_comments/issues"
-	  },
-	  "repository": {
+	},
+	"repository": {
 		"type": "git",
 		"url": "https://github.com/aleksandar-b/cute_ascii_diagram_comments"
-	  }
+	}
 }
