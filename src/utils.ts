@@ -28,7 +28,7 @@ export const getFunctionParams = (selection: string) => {
     return `${result})`;
   }
 };
-             
+                        
 export const insertAt = (str: string, sub: string, pos: number) =>
   `${str.slice(0, pos)}${sub}${str.slice(pos)}`;
 
@@ -96,7 +96,7 @@ export const generateMarkers = (
 
 export const getFunctionSignature = (selection: string) =>
   `// ${getFunctionName(selection)} ${getFunctionParams(selection)}`;
-                         
+
 export const generateVerticalLines = (
   positions: Position[],
   functionSignature: string

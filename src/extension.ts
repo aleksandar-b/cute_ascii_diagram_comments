@@ -9,11 +9,9 @@ import {
 	getFunctionSignature,
 	generateVerticalLines
   }  from './utils';
-                              
+                                       
 export function activate(context: vscode.ExtensionContext) {
-	const disposable = vscode.commands.registerCommand('asciidoccomments.docComments', () => {
-		vscode.window.showInformationMessage('Hello World from asciidocComments!');
-		
+	const disposable = vscode.commands.registerCommand('asciidoccomments.docComments', () => {	
 		if(!vscode.window.activeTextEditor) {
 			return;
 		}

@@ -3,11 +3,14 @@
 	"displayName": "asciidocComments",
 	"description": "adds ascii doc comments to function signature",
 	"version": "0.0.1",
+	"publisher": "Aleksandar Brajkovic",
 	"engines": {
 		"vscode": "^1.45.0"
 	},
 	"categories": [
-		"Other"
+		"Other",
+		"Programming Languages",
+		"Snippets"
 	],
 	"activationEvents": [
         "onCommand:asciidoccomments.docComments"
@@ -19,7 +22,20 @@
 				"command": "asciidoccomments.docComments",
                 "title": "Generate Ascii doc comments"
 			}
-		]
+		],
+		"menus": {
+			"editor/context": [
+				{
+				  "command": "asciidoccomments.docComments"
+				}
+			]
+		},
+		"keybindings": [
+			{
+			  "command": "asciidoccomments.docComments",
+			  "key": "ctrl+alt+d ctrl+alt+d"
+			}
+		  ]
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
