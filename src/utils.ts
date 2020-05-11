@@ -3,7 +3,7 @@ export interface Position {
   name: string;
   isEmptyRow: boolean;
 }
-
+       
 export const getFunctionName = (selection: string) => {
   const parsed = selection
     .slice(0, selection.indexOf("("))
@@ -15,13 +15,39 @@ export const getFunctionName = (selection: string) => {
 
   return parsed[parsed.length - 1];
 };
+const findClosingBracketIndex = (selection:string) => {
+  let countOpen = 0;
+  let countClosed = 0;
+
+  let index = 0;
+
+  for (let i = 0; i < selection.length; i++) {
+    if(selection[i] === '(') {
+      countOpen = countOpen + 1;
+    }
+
+    if(selection[i] === ')') {
+      countClosed = countClosed + 1;
+    }
+    
+    if(countOpen === countClosed && countOpen > 0) {
+      index = i;
+      break;
+    }
+  }
+
+  return index;
+};
 
 export const getFunctionParams = (selection: string) => {
+  const closingBracket = findClosingBracketIndex(selection);
+
   const result = selection
-    .slice(selection.indexOf("("), selection.indexOf(")") + 1)
+    .slice(selection.indexOf("("), closingBracket + 1)
     .split(",")
     .map((param) => param.split(":")[0])
     .join(", ");
+
   if (result.endsWith(")")) {
     return result;
   } else {
@@ -31,7 +57,7 @@ export const getFunctionParams = (selection: string) => {
                         
 export const insertAt = (str: string, sub: string, pos: number) =>
   `${str.slice(0, pos)}${sub}${str.slice(pos)}`;
-
+ 
 export const getPositions = (
   parameters: string,
   functionSignature: string
@@ -42,21 +68,21 @@ export const getPositions = (
       const tail = memo.slice(-1)[0];
       const lastFoundParamPosition = tail ? tail.position.end : 0;
       const start = functionSignature.indexOf(
-        text.replace(/[(|)]/, "").trim(),
+        text.trim(),
         lastFoundParamPosition
       );
       const end =
         functionSignature.indexOf(
-          text.replace(/[(|)]/, "").trim(),
+          text.trim(),
           lastFoundParamPosition
-        ) + text.replace(/[(|)]/, "").trim().length;
+        ) + text.trim().length;
       const middle = start + Math.floor((end - start) / 2);
 
       return [
         ...memo,
         {
           position: { start, end, middle },
-          name: text.replace(/[(|)]/, "").trim(),
+          name: text.replace(/[^a-zA-Z]/g, "").trim(),
           isEmptyRow: false,
         },
         {
@@ -70,7 +96,7 @@ export const getPositions = (
 
   return result;
 };
-
+                                              
 export const generateMarkers = (
   positions: Position[],
   functionSignature: string
@@ -95,7 +121,7 @@ export const generateMarkers = (
 };
 
 export const getFunctionSignature = (selection: string) =>
-  `// ${getFunctionName(selection)} ${getFunctionParams(selection)}`;
+  `${getFunctionName(selection)} ${getFunctionParams(selection)}`;
 
 export const generateVerticalLines = (
   positions: Position[],

@@ -9,7 +9,18 @@ import {
 	getFunctionSignature,
 	generateVerticalLines
   }  from './utils';
-                                       
+
+const languages = {
+	typescript: '//',
+	javascript: '//',
+	vue: '//',
+    javascriptreact: '//',
+	typescriptreact: '//',
+	golang: '//',
+	python: '#',
+	ruby: '#',
+} as {[key: string]: string};
+                                             
 export function activate(context: vscode.ExtensionContext) {
 	const disposable = vscode.commands.registerCommand('asciidoccomments.docComments', () => {	
 		if(!vscode.window.activeTextEditor) {
@@ -18,7 +29,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		const selection:vscode.Selection  = vscode.window.activeTextEditor.selection;
 		const startLine = selection.start.line - 1;
-		const selectedText = vscode.window?.activeTextEditor?.document.getText(selection).replace(/\n/g, '');
+		const selectedText = vscode.window?.activeTextEditor.document.getText(selection).replace(/\n/g, '').replace(/\s{2,}/g, '');
 
 		const parameters = getFunctionParams(selectedText);
 		const functionSignature = getFunctionSignature(selectedText);
@@ -29,7 +40,14 @@ export function activate(context: vscode.ExtensionContext) {
 		const bucket:string[] = [];
 		const all: string[] = bucket.concat(functionSignature, markers, verticalLines);
 		
-		const result = all.map((line: string) => line.startsWith('//') ? line : `//${line.slice(2)}`).join('\n');
+		const result = all.map((line: string) => {
+			var lang = vscode.window.activeTextEditor?.document.languageId || 'javascript';
+			let comment = '//';
+			if (languages.hasOwnProperty(lang)) {
+				comment = languages[lang];
+			}
+			return `${comment} ${line}`;
+		}).join('\n');
 		
 		vscode.window.activeTextEditor?.edit((editBuilder: vscode.TextEditorEdit) => {
 			const pos = new vscode.Position(startLine, 0);
