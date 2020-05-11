@@ -64,5 +64,10 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/aleksandar-b/cute_ascii_diagram_comments"
+	},
+	"__metadata": {
+		"id": "85c1e80e-2dd1-4c52-a750-b08f24c68690",
+		"publisherDisplayName": "aleksandarb",
+		"publisherId": "7ba9e570-53f9-4efb-9449-206f9ff1aad9"
 	}
 }
