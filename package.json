@@ -2,7 +2,7 @@
 	"name": "asciidoccomments",
 	"displayName": "asciidocComments",
 	"description": "adds ascii doc comments to function signature",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"publisher": "aleksandarb",
 	"engines": {
 		"vscode": "^1.45.0"
