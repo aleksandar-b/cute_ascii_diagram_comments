@@ -10,4 +10,4 @@ Still in alpha
 
 # Commands
 ## Ascii doc comments
-`Ctrl+Alt+D` and again `Ctrl+Alt+D`
+Right click -> Generate ascii doc comments
