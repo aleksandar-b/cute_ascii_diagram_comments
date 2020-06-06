@@ -3,6 +3,10 @@
 ## Notice
 Still in alpha
 
+## Notice
+
+Should be used for educational/teaching purposes. For documenting code use JsDoc/JavaDoc.
+
 "Ascii doc comments" is a Visual Studio Code extension that automatically generates cute ascii diagram comments.
 ## Features
 
